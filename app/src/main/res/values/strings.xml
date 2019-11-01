@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+
+    <!-- Default Values -->
+    <string name="city">City</string>
+    <string name="date">Day, dd month yyyy</string>
+    <string name="temper">00°C</string>
+    <string name="celsius">°C</string>
+    <string name="fahrenheit">°F</string>
+    <string name="weather">Weather</string>
+
+    <!-- Content Description -->
+    <string name="weather_icon">Weather</string>
+
 </resources>
