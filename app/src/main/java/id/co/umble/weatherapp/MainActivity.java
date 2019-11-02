@@ -179,6 +179,12 @@ public class MainActivity extends AppCompatActivity {
                 // Set Cloudiness
                 setCloudiness(response);
 
+                // Set Sunrise
+                setSunrise(response);
+
+                // Set Sunset
+                setSunset(response);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -249,6 +255,20 @@ public class MainActivity extends AppCompatActivity {
     public void setCloudiness(JSONObject object){
         String cloudiness = object.optJSONObject("clouds").optInt("all") + " %";
         tvCloudiness.setText(cloudiness);
+    }
+
+    public void setSunrise(JSONObject object){
+        Long unixDate = object.optJSONObject("sys").optLong("sunrise");
+        Date date = new Date(unixDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm Z");
+        tvSunrise.setText(sdf.format(date) + "AM");
+    }
+
+    public void setSunset(JSONObject object){
+        Long unixDate = object.optJSONObject("sys").optLong("sunset");
+        Date date = new Date(unixDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm Z");
+        tvSunset.setText(sdf.format(date) + "PM");
     }
 
     //TODO

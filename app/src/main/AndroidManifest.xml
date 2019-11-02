@@ -27,7 +27,6 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
 
-        <activity android:name=".MapView" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
