@@ -2,39 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/img_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/weather_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date"
-        app:layout_constraintVertical_bias="0.100000024"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tv_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/city"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
+        app:autoSizeMaxTextSize="24sp"
+        app:autoSizeMinTextSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
-        android:id="@+id/tv_date"
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date"
+        android:textColor="@android:color/tertiary_text_dark"
+        app:autoSizeMaxTextSize="14sp"
+        app:autoSizeMinTextSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,46 +37,340 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_weather"
-        app:layout_constraintVertical_bias="0.24000001">
-
-        <TextView
-            android:id="@+id/tv_current_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:text="@string/temper"
-            android:textAllCaps="true"
-            android:textSize="72sp" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_time"
+        app:layout_constraintVertical_bias="0.120000005">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:orientation="vertical">
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/img_weather"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="@string/weather_icon" />
 
             <TextView
                 android:id="@+id/tv_weather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weather"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/tv_min_max_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/temper"
-                android:textSize="20sp" />
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="22sp"
+                app:autoSizeMaxTextSize="22sp"
+                app:autoSizeMinTextSize="18sp" />
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_current_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/temper"
+            android:textAllCaps="true"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="72sp"
+            app:autoSizeMaxTextSize="72sp"
+            app:autoSizeMinTextSize="60sp" />
+
+        <TextView
+            android:id="@+id/tv_min_max_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/temper"
+            android:textColor="@android:color/secondary_text_light"
+            android:textSize="18sp"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="16sp" />
+
     </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/toggle_units"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:checked="false"
+        android:contentDescription="@string/toggle_temp"
+        android:textOff="@string/fahrenheit"
+        android:textOn="@string/celsius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.9">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_wind"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/wind_icon"
+                    app:srcCompat="@drawable/ic_wind" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_wind_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wind_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_wind_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wind_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_pressure"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/pressure_icon"
+                    app:srcCompat="@drawable/ic_pressure" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_pressure_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pressure_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_pressure_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pressure_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_humidity"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/humidity_icon"
+                    app:srcCompat="@drawable/ic_humidity" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_humidity_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/humidity_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_humidity_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/humidity_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_cloudiness"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/cloudiness_icon"
+                    app:srcCompat="@drawable/ic_clouds" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_cloudiness_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cloudiness_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_cloudiness_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cloudiness_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_sunrise"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/sunrise_icon"
+                    app:srcCompat="@drawable/ic_sunrise" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_sunrise_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunrise_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_sunrise_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunrise_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_sunset"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="@string/sunset_icon"
+                    app:srcCompat="@drawable/ic_sunset" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_sunset_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunset_label"
+                        android:textColor="@android:color/secondary_text_light" />
+
+                    <TextView
+                        android:id="@+id/tv_sunset_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sunset_value" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn_map"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,33 @@
 
     <!-- Default Values -->
     <string name="city">City</string>
-    <string name="date">Day, dd month yyyy</string>
-    <string name="temper">00°C</string>
-    <string name="celsius">°C</string>
-    <string name="fahrenheit">°F</string>
+    <string name="date">Timezone</string>
+    <string name="temper">00</string>
+    <string name="celsius">C</string>
+    <string name="fahrenheit">F</string>
     <string name="weather">Weather</string>
+    <string name="wind_value">00 mph</string>
+    <string name="humidity_value">00%</string>
+    <string name="pressure_value">0 hPa</string>
+    <string name="cloudiness_value">00%</string>
+    <string name="sunrise_value">00:00 AM</string>
+    <string name="sunset_value">00:00 PM</string>
 
     <!-- Content Description -->
     <string name="weather_icon">Weather</string>
+    <string name="toggle_temp">Change Units</string>
+    <string name="wind_label">Wind</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="pressure_label">Pressure</string>
+    <string name="cloudiness_label">Cloudiness</string>
+    <string name="sunrise_label">Sunrise</string>
+    <string name="sunset_label">Sunset</string>
+    <string name="wind_icon">Wind icon by Icons8.com</string>
+    <string name="humidity_icon">Humidity icon by Icons8.com</string>
+    <string name="pressure_icon">Pressure Gauge icon by Icons8.com</string>
+    <string name="cloudiness_icon">Clouds icon by Icons8.com</string>
+    <string name="sunrise_icon">Sunrise icon by Icons8.com</string>
+    <string name="sunset_icon">Sunset icon by Icons8.com</string>
+    <string name="map_icon">Map Marker icon by Icons8.com</string>
 
 </resources>

@@ -16,25 +16,25 @@ import org.json.JSONObject;
 public class VolleyRequest {
     private static VolleyRequest instance;
     private RequestQueue requestQueue;
-    private ImageLoader imageLoader;
+//    private ImageLoader imageLoader;
     private static Context context;
 
     private VolleyRequest(Context context){
         this.context = context;
         requestQueue = getRequestQueue();
 
-        imageLoader = new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
-            private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
-            @Override
-            public Bitmap getBitmap(String url) {
-                return cache.get(url);
-            }
-
-            @Override
-            public void putBitmap(String url, Bitmap bitmap) {
-                cache.put(url, bitmap);
-            }
-        });
+//        imageLoader = new ImageLoader(requestQueue, new ImageLoader.ImageCache() {
+//            private final LruCache<String, Bitmap> cache = new LruCache<String, Bitmap>(20);
+//            @Override
+//            public Bitmap getBitmap(String url) {
+//                return cache.get(url);
+//            }
+//
+//            @Override
+//            public void putBitmap(String url, Bitmap bitmap) {
+//                cache.put(url, bitmap);
+//            }
+//        });
     }
 
     public static synchronized VolleyRequest getInstance(Context context){
@@ -53,7 +53,7 @@ public class VolleyRequest {
         getRequestQueue().add(req);
     }
 
-    public ImageLoader getImageLoader(){
-        return imageLoader;
-    }
+//    public ImageLoader getImageLoader(){
+//        return imageLoader;
+//    }
 }
