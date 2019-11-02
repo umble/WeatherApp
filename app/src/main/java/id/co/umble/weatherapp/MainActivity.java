@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MapView.class);
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
@@ -254,4 +254,6 @@ public class MainActivity extends AppCompatActivity {
     //TODO
     // Create separate weather object, don't need all this function in MainActivity
     // Create multiple theme for different weather
+    // Create different class for API key
+    // Move getResponse to VolleyRequest then make interface class for onResponse
 }
