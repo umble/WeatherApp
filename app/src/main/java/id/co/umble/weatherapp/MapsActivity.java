@@ -33,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // CONSTS
     private static final String API_WEATHER_HEAD = "https://api.openweathermap.org/data/2.5/weather?";
-    private static final String APP_ID = "&appid=fdf871cedaf3413c6a23230372c30a02";
+    private static final String APP_ID = "&appid={API_KEY}";
     private static final String CELSIUS = "\u2103";
 
     // Customizable var
